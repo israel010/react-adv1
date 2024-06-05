@@ -1,0 +1,19 @@
+.bg-dark {
+  background-color: rgb(56, 56, 56);
+}
+
+.img-style {
+  width: 100%;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+.custom-btn button,
+.custom-btn div {
+  color: white;
+  border-color: white;
+}

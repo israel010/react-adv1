@@ -11,6 +11,7 @@ export { ProductImage } from "./ProductImage";
 export { ProductTitle } from "./ProductTitle";
 
 export { ProductButtons } from "./ProductsButtons";
+
 export const ProductCard: ProductCardHocProps = Object.assign(ProductCardHoc, {
   Title: ProductTitle,
   Image: ProductImage,
