@@ -1,11 +1,9 @@
 import { ProductCard } from "../components";
+import { product, products } from "../data/products";
+import useShoppingCart from "../hooks/useShoppingCart";
 import "../styles/custom-styles.css";
 export default function ShoppingPage() {
-  const product = {
-    id: "1",
-    title: "Coffee",
-    img: "./coffee-mug.png",
-  };
+  const { shoppingCart, onProductCountChange } = useShoppingCart();
 
   return (
     <div>
@@ -19,35 +17,40 @@ export default function ShoppingPage() {
           flexDirection: "row",
         }}
       >
-        <ProductCard product={product} className="bg-dark">
-          <ProductCard.Image />
-          <ProductCard.Title title={"cafe"} className="title" />
-          <ProductCard.Buttons className="custom-btn" />
-        </ProductCard>
-        <ProductCard product={product} className="bg-dark">
-          <ProductCard.Image />
-          <ProductCard.Title title={"cafe"} className="title" />
-          <ProductCard.Buttons className="custom-btn" />
-        </ProductCard>
-        <ProductCard
-          product={product}
-          style={{
-            backgroundColor: "red",
-          }}
-        >
-          <ProductCard.Image
+        {products.map((p) => (
+          <ProductCard
+            key={p.id}
+            product={p}
+            className="bg-dark"
+            onChange={onProductCountChange}
+            value={shoppingCart[p.id]?.count || 0}
+          >
+            <ProductCard.Image img={p.img} />
+            <ProductCard.Title className="title" />
+            <ProductCard.Buttons className="custom-btn" />
+          </ProductCard>
+        ))}
+      </div>
+
+      {/* Productos flotantes  */}
+
+      <div className="shopping-cart">
+        {Object.entries(shoppingCart).map(([key, value]) => (
+          <ProductCard
+            key={key}
+            product={value}
+            className="bg-dark"
             style={{
-              boxShadow: "0px 4px 20px black",
+              width: "100px",
             }}
-          />
-          <ProductCard.Title
-            style={{
-              fontWeight: "bold",
-              color: "white",
-            }}
-          />
-          <ProductCard.Buttons />
-        </ProductCard>
+            value={value.count}
+            onChange={onProductCountChange}
+          >
+            <ProductCard.Image img={value.img} />
+            <ProductCard.Title className="title" />
+            <ProductCard.Buttons className="custom-btn" />
+          </ProductCard>
+        ))}
       </div>
     </div>
   );
