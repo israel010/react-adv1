@@ -1,0 +1,47 @@
+[
+  {
+    "type": "input",
+    "name": "firstName",
+    "placeholder": "Israel",
+    "label": "First Name",
+    "value": "",
+    "validations": [{ "type": "required" }, { "tye": "minLength", "value": 5 }]
+  },
+  {
+    "type": "input",
+    "name": "lastName",
+    "placeholder": "Zamora",
+    "label": "Last Name",
+    "value": "",
+    "validations": [{ "type": "required" }]
+  },
+  {
+    "type": "email",
+    "name": "email",
+    "placeholder": "email",
+    "label": "Email",
+    "value": "",
+    "validations": [{ "type": "required" }, { "type": "email" }]
+  },
+  {
+    "type": "select",
+    "name": "favoriteGames",
+    "label": "Favorite Game",
+    "value": "",
+    "options": [
+      {
+        "id": 1,
+        "label": "Super Smash"
+      },
+      {
+        "id": 2,
+        "label": "Halo reach"
+      },
+      {
+        "id": 3,
+        "label": "Mortal Kombat"
+      }
+    ],
+    "validations": [{ "type": "required" }]
+  }
+]
